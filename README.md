@@ -11,5 +11,5 @@ nextflow run elan-pull.nf --location <path>
 
 ### Params
 
-* `location` location of pull filtered artifacts
+* `location` location to pull filtered artifacts
 
