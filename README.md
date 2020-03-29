@@ -6,7 +6,7 @@ This pipeline was designed to handle uploaded data for the COG-UK consortium.
 ## Execute
 
 ```
-nextflow run elan-pull.nf --location <path> --breadth 50.00 --depth 10.00
+nextflow run main.nf --location <path> --breadth 50.00 --depth 10.00
 ```
 
 ### Params
