@@ -4,11 +4,14 @@ params.version = "v1"
 params.qc = "/cephfs/covid/bham/nicholsz/artifacts/${params.version}/qc/test.qc"
 params.artifacts_root = "/cephfs/covid/bham/nicholsz/artifacts/${params.version}/"
 
+params.breadth = 50.00
+params.depth = 10
+
 Channel
     .fromPath(params.qc)
     .splitCsv(sep:'\t', header: true)
-    .filter { row -> Float.parseFloat(row.pc_acgt) > 50.00 }
-    .filter { row -> Float.parseFloat(row.pc_pos_cov_gte10) > 50 }
+    .filter { row -> Float.parseFloat(row.pc_acgt) >= params.breadth }
+    .filter { row -> Float.parseFloat(row["pc_pos_cov_gte${params.depth}"]) >= params.breadth }
     .map { row-> tuple(file([params.artifacts_root, row.fasta_path].join('/')), file([params.artifacts_root, row.bam_path].join('/'))) }
     .set { manifest_ch }
 
