@@ -1,6 +1,6 @@
 #!/usr/bin/env nextflow
 
-params.version = "v1"
+params.version = "v1-202003301530"
 params.qc = "/cephfs/covid/bham/nicholsz/artifacts/${params.version}/qc/test.qc"
 params.artifacts_root = "/cephfs/covid/bham/nicholsz/artifacts/${params.version}/"
 
@@ -17,6 +17,8 @@ Channel
 
 process copy_artifacts {
     tag { fasta }
+
+    //stageInMode "copy"
 
     input:
     tuple file(fasta), file(bam) from manifest_ch
