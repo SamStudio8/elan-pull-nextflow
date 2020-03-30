@@ -27,8 +27,8 @@ process copy_artifacts {
     tuple file(fasta), file(bam) into artifact_ch
 
     """
-    touch ${fasta}
-    touch ${bam}
+    ls ${fasta}
+    ls ${bam}
     """
 }
 
