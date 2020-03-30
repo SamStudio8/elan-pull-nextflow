@@ -18,7 +18,7 @@ Channel
 process copy_artifacts {
     tag { fasta }
 
-    //stageInMode "copy"
+    stageInMode "copy"
 
     input:
     tuple file(fasta), file(bam) from manifest_ch
